@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  title: "Sesam datasets API"
+  description: "Datasets API for the Sesam backend task"
+  version: "1.0.0"
+
+servers:
+  - url: "/datasets"
+
+paths:
+  /:
+    get:
+      operationId: "datasets."
+      summary: "List all ids and file sizes"
+      description: "List the ids of the uploaded datasets and their corresponding file sizes."
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: "array"
+    post:
+      operationId: "datasets."
+      summary: "Create a dataset"
+      description: "Creates a dataset. This endpoint takes a JSON file as input, and stores it somewhere/how on the server.
+        A reference to this created object is returned by the endpoint, for instance an `id` or `url`."
+      requestBody:
+        content:
+          application/json:
+              schema:
+                type: "array"
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: "array"
+        "400":
+          description: "Validation exception. Ex: Not valid JSON"
+  /{id}:
+    get:
+      operationId: "datasets."
+      summary: "Return the requested dataset"
+      description: ""
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: "array"
+        "404":
+          description: "Dataset doesn't exist"
+          content:
+            application/json:
+              schema:
+                type: "array"
+    delete:
+      operationId: "datasets."
+      summary: "Delete the requested dataset"
+      description: ""
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: "array"
+        "404":
+          description: "Dataset doesn't exist"
+          content:
+            application/json:
+              schema:
+                type: "array"
+  /{id}/excel:
+    get:
+      operationId: "datasets."
+      summary: "Export the dataset as an excel file"
+      description: ""
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/vnd.ms-excel:
+              schema:
+                type: "string"
+                format: "binary"
+        "404":
+          description: "Dataset doesn't exist"
