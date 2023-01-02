@@ -24,14 +24,13 @@ paths:
                 type: "array"
     post:
       operationId: "datasets_api.create_dataset"
-      parameters:
-       - $ref: "#/components/parameters/dataset"
       summary: "Create a dataset"
       description: "Creates a dataset. This endpoint takes a JSON file as input, and stores it somewhere/how on the server.
         A reference to this created object is returned by the endpoint, for instance an `id` or `url`."
       tags:
         - endpoints
       requestBody:
+        required: true
         content:
           application/json:
               schema:
@@ -110,13 +109,6 @@ paths:
 
 components:
   parameters:
-    dataset:
-      name: dataset
-      in: path
-      required: true
-      description: JSON dataset
-      schema:
-        type: array
     id:
       name: id
       in: path
