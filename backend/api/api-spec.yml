@@ -10,9 +10,11 @@ servers:
 paths:
   /:
     get:
-      operationId: "datasets."
+      operationId: "datasets_api.list_datasets"
       summary: "List all ids and file sizes"
       description: "List the ids of the uploaded datasets and their corresponding file sizes."
+      tags:
+        - endpoints
       responses:
         "200":
           description: "Successful operation"
@@ -21,10 +23,14 @@ paths:
               schema:
                 type: "array"
     post:
-      operationId: "datasets."
+      operationId: "datasets_api.create_dataset"
+      parameters:
+       - $ref: "#/components/parameters/dataset"
       summary: "Create a dataset"
       description: "Creates a dataset. This endpoint takes a JSON file as input, and stores it somewhere/how on the server.
         A reference to this created object is returned by the endpoint, for instance an `id` or `url`."
+      tags:
+        - endpoints
       requestBody:
         content:
           application/json:
@@ -41,9 +47,13 @@ paths:
           description: "Validation exception. Ex: Not valid JSON"
   /{id}:
     get:
-      operationId: "datasets."
+      operationId: "datasets_api.get_dataset"
+      parameters:
+       - $ref: "#/components/parameters/id"
       summary: "Return the requested dataset"
       description: ""
+      tags:
+        - endpoints
       responses:
         "200":
           description: "Successful operation"
@@ -58,9 +68,13 @@ paths:
               schema:
                 type: "array"
     delete:
-      operationId: "datasets."
+      operationId: "datasets_api.delete_dataset"
+      parameters:
+       - $ref: "#/components/parameters/id"
       summary: "Delete the requested dataset"
       description: ""
+      tags:
+        - endpoints
       responses:
         "200":
           description: "Successful operation"
@@ -76,9 +90,13 @@ paths:
                 type: "array"
   /{id}/excel:
     get:
-      operationId: "datasets."
+      operationId: "datasets_api.export_dataset"
+      parameters:
+       - $ref: "#/components/parameters/id"
       summary: "Export the dataset as an excel file"
       description: ""
+      tags:
+        - endpoints
       responses:
         "200":
           description: "Successful operation"
@@ -89,3 +107,20 @@ paths:
                 format: "binary"
         "404":
           description: "Dataset doesn't exist"
+
+components:
+  parameters:
+    dataset:
+      name: dataset
+      in: path
+      required: true
+      description: JSON dataset
+      schema:
+        type: array
+    id:
+      name: id
+      in: path
+      required: true
+      description: The dataset ID
+      schema:
+        type: integer
