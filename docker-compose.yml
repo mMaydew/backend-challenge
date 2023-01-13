@@ -16,7 +16,7 @@ services:
   db:
     image: postgres:latest
     volumes:
-      - ./backend/datasets.sql:/docker-entrypoint-initdb.d/datasets.sql
+      - ./backend/db/datasets.sql:/docker-entrypoint-initdb.d/datasets.sql
     expose:
       - 5432
     ports:

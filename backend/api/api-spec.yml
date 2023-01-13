@@ -10,7 +10,7 @@ servers:
 paths:
   /:
     get:
-      operationId: "datasets_api.list_datasets"
+      operationId: "api.datasets_api.list_datasets"
       summary: "List all ids and file sizes"
       description: "List the ids of the uploaded datasets and their corresponding file sizes."
       tags:
@@ -23,7 +23,7 @@ paths:
               schema:
                 type: "array"
     post:
-      operationId: "datasets_api.create_dataset"
+      operationId: "api.datasets_api.create_dataset"
       summary: "Create a dataset"
       description: "Creates a dataset. This endpoint takes a JSON file as input, and stores it somewhere/how on the server.
         A reference to this created object is returned by the endpoint, for instance an `id` or `url`."
@@ -46,7 +46,7 @@ paths:
           description: "Validation exception. Ex: Not valid JSON"
   /{id}:
     get:
-      operationId: "datasets_api.get_dataset"
+      operationId: "api.datasets_api.get_dataset"
       parameters:
        - $ref: "#/components/parameters/id"
       summary: "Return the requested dataset"
@@ -67,7 +67,7 @@ paths:
               schema:
                 type: "array"
     delete:
-      operationId: "datasets_api.delete_dataset"
+      operationId: "api.datasets_api.delete_dataset"
       parameters:
        - $ref: "#/components/parameters/id"
       summary: "Delete the requested dataset"
@@ -89,7 +89,7 @@ paths:
                 type: "array"
   /{id}/excel:
     get:
-      operationId: "datasets_api.export_dataset"
+      operationId: "api.datasets_api.export_dataset"
       parameters:
        - $ref: "#/components/parameters/id"
       summary: "Export the dataset as an excel file"

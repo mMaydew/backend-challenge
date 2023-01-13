@@ -1,0 +1,6 @@
+sqlalchemy==1.4.44
+connexion==2.14.1
+connexion[swagger-ui]
+pandas==1.5.2
+openpyxl==3.0.10
+psycopg2-binary==2.9.5
