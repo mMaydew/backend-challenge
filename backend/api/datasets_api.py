@@ -66,14 +66,15 @@ def delete_dataset(id: int) -> dict:
     return {"id": id}
 
 
-def export_dataset(id: int) -> Response:
+def export_dataset(id: int):
     """Export the requested dataset as an Excel file
 
     Args:
         id (int): id of the dataset
 
     Returns:
-        Response: Excel file of the dataset
+        octet-stream (binary): Excel file of the dataset
+        dict: Error if dataset doesn't exist
     """
     file_creation = excel.dict_to_excel(id)
     if not file_creation:
