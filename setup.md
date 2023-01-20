@@ -18,6 +18,7 @@ In `/backend/tests`:
 
 # CLI:
 Navigate to the `/cli` dir:
+`python sesam_cli.py --help`
 - List all: `... get`
 - List one: `... get <ID>`
 - Create: `... create <path to dataset>`
